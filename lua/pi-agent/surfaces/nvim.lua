@@ -4,14 +4,14 @@ local utils = require("pi-agent.utils")
 local M = {}
 
 ---@class pi_agent.surfaces.nvim.Opts
----@field open_in "window"|"tab"
+---@field open_in "window"|"tab"|"sliece"
 ---@field auto_insert_on_focus boolean
 ---@field split ("right"|"left"|"top"|"bottom")
 ---@field size_ratio number
 
 ---@type pi_agent.surfaces.nvim.Opts
 M.default_opts = {
-	open_in = "window",
+	open_in = "sliece",
 	auto_insert_on_focus = true,
 	split = "right",
 	size_ratio = 0.4,
@@ -231,7 +231,7 @@ function M.focus()
 	elseif M.opts.open_in == "tab" then
 		_focus_tab()
 	else
-		utils.raise("What?")
+		utils.info("sliece start")
 	end
 end
 

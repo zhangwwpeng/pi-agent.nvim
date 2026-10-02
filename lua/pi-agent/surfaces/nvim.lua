@@ -138,7 +138,7 @@ function M.open(pi)
 
 		-- create a buffer if we don't have one
 		if M.buf_id == nil then
-			M.buf_id = vim.api.nvim_create_buf(false, true)
+			M.buf_id = vim.api.nvim_create_buf(true, true)
 			vim.bo[M.buf_id].filetype = "pi-agent"
 		end
 	end

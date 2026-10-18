@@ -524,7 +524,7 @@ function Pi.paste_selection_contents(cb, opts)
 	}
 
 	vim.list_extend(with_header, lines)
-	table.insert(with_header, "```")
+	table.insert(with_header, "```\n")
 
 	Pi.send(cb, "command", "append_text", { lines = with_header, as_paragraph = true })
 end

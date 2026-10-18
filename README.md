@@ -88,8 +88,8 @@ require("pi-agent").setup()
 
 ### Setup
 
-pi-agent supports three "surfaces" (where your pi instance runs) out of the box:
-`nvim`, `herdr`, and `tmux`.
+pi-agent supports four "surfaces" (where your pi instance runs) out of the box:
+`nvim`, `nvim_flt`, `herdr`, and `tmux`.
 
 If omitted it defaults to opening pi in a Neovim vsplit.
 
@@ -97,7 +97,7 @@ To set a specific surface, for example [herdr](https://herdr.dev/):
 ```lua
 local pi = require("pi-agent")
 pi.setup({
-    surface = pi.get_surface("herdr") -- or "nvim" or "tmux"
+    surface = pi.get_surface("herdr") -- or "nvim", "nvim_flt" or "tmux"
 })
 ```
 
@@ -240,6 +240,31 @@ Surface implementations are just Lua modules, so you can provide your own shaped
 
 	-- what size to give the pi window in a split
 	size_ratio = 0.4,
+}
+```
+
+#### `nvim_flt` surface options
+
+```lua
+{
+	-- set up autocmd that enters insert mode when focusing on pi
+	auto_insert_on_focus = true,
+
+	-- ratio of editor columns/lines when <= 1, absolute size otherwise
+	width = 0.8,
+	height = 0.8,
+
+	-- border style, see ':h nvim_open_win'
+	border = "rounded",
+
+	-- transparency (0-100)
+	winblend = 0,
+
+	-- title shown on the top border, set to "" to disable
+	title = " pi ",
+
+	-- stacking order
+	zindex = 50,
 }
 ```
 

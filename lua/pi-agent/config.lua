@@ -25,6 +25,7 @@ local M = {}
 
 M.valid_surfaces = {
 	nvim = true,
+	nvim_flt = true,
 	tmux = true,
 	herdr = true,
 }
@@ -74,7 +75,7 @@ end
 function M.setup(opts)
 	M._opts = vim.tbl_deep_extend("force", vim.deepcopy(M.default_opts), opts or {})
 
-	local default_surface = require("pi-agent.surfaces.nvim")
+	local default_surface = require("pi-agent.surfaces.nvim_flt")
 
 	-- default to nvim surface
 	if M._opts.surface == nil then
@@ -83,7 +84,7 @@ function M.setup(opts)
 		local ok, err = pcall(M.get_opts().surface.validate)
 		if not ok then
 			utils.error(string.format("Surface failed to validate with error: %s.", err))
-			utils.error("Defaulting to 'nvim' surface.")
+			utils.error("Defaulting to 'nvim_flt' surface.")
 			M._opts.surface = default_surface
 		end
 	end

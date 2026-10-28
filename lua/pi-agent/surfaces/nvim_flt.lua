@@ -163,7 +163,7 @@ local function _focus_float()
     local cfg = {
         relative = "editor",
         width = width,
-        height = height,
+        height = height+1,
         row = math.max(0, math.floor((vim.o.lines - height) / 2) - 1),
         col = math.max(0, math.floor((vim.o.columns - width) / 2)),
         style = "minimal",
